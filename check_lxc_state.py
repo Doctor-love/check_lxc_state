@@ -24,14 +24,10 @@ if not container.defined:
     sys.exit(3)
 
 
-if container.state == "RUNNING":
+if container.running:
     print("OK - Container %s is running" % name)
     sys.exit(0)
 
-elif container.state == "STOPPED":
-    print("CRITICAL- Container %s is stopped" % name)
-    sys.exit(2)
-
 else:
-    print("UNKNOWN - Unexpected error!")
+    print("CRITICAL - Container %s is not running" % name)
     sys.exit(3)
